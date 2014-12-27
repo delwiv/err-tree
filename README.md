@@ -12,7 +12,7 @@ It supports:
 
 Here is the rendering of an error message in the console:
 
-![err-tree rendering](https://bitbucket.org/lsystems/err-tree/src/docs/images/err-tree-complex-beautifier.png)
+![err-tree rendering](https://bytebucket.org/lsystems/err-tree/raw/tip/docs/images/err-tree-complex-beautifier.png)
 
 ## Creating new error types using the `errTree` function
 
@@ -238,7 +238,7 @@ errTree.beautifiers.get('complex', {
 })
 ```
 
-![err-tree complex beautifier](https://bitbucket.org/lsystems/err-tree/src/docs/images/err-tree-complex-beautifier.png)
+![err-tree complex beautifier](https://bytebucket.org/lsystems/err-tree/raw/tip/docs/images/err-tree-complex-beautifier.png)
 
 ## Message handlers
 
@@ -326,7 +326,7 @@ errTree.setDefaultMessageHandler('i18next', options);
 
 `errTree` comes with a bundled exception handler that will print better uncatched exceptions:
 
-![err-tree exception handler](https://bitbucket.org/lsystems/err-tree/src/docs/images/err-tree-exception-handler.png)
+![err-tree exception handler](https://bytebucket.org/lsystems/err-tree/raw/tip/docs/images/err-tree-exception-handler.png)
 
 To activate it (it is not by default) use:
 
