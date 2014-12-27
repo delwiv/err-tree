@@ -1,6 +1,6 @@
 {
   "name": "err-tree",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Advanced error handling & printing",
   "author": {
     "name": "L.systems SARL",
@@ -16,7 +16,7 @@
     "prettyprinting",
     "color"
   ],
-  "homepage": "https://bitbucket.org/qraynaud/err-tree",
+  "homepage": "https://bitbucket.org/lsystems/err-tree",
   "repository": {
     "type": "hg",
     "url": "https://bitbucket.org/lsystems/err-tree"
