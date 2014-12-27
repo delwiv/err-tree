@@ -213,7 +213,7 @@ Likely sensitive data that should be associated to the error only when not in pr
 
 The `default` beautifier renders nearly exactly the stack as v8 does. The only major difference is that the namespace is inserted before the error message if one is specified. If anything else looks different it is likely a bug.
 
-![err-tree default beautifier](https://bitbucket.org/lsystems/err-tree/src/docs/images/err-tree-default-beautifier.png)
+![err-tree default beautifier](https://bytebucket.org/lsystems/err-tree/raw/tip/docs/images/err-tree-default-beautifier.png)
 
 It takes no option an an instance can be retrieved as easily as :
 
