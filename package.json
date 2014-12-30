@@ -25,15 +25,20 @@
     "url": "https://bitbucket.org/lsystems/err-tree/issues?status=new&status=open"
   },
   "main": "lib/index.js",
+  "scripts": {
+    "test": "echo 'To watch, use <npm run watch>' && mocha tests/",
+    "watch": "mocha -w tests/"
+  },
   "dependencies": {
-    "chalk": "^0.5.1",
-    "chrome-cpu-profiler": "^1.0.1",
     "color-path": "^1.0.0",
     "lodash": "^2.4.1",
-    "minimatch": "^2.0.1"
+    "multimatch": "^2.0.0"
   },
   "devDependencies": {
+    "chai": "^1.10.0",
+    "chai-properties": "^1.1.0",
     "i18next": "^1.7.8",
-    "i18next.yaml": "^1.6.0"
+    "i18next.yaml": "^1.6.0",
+    "mocha": "^2.1.0"
   }
 }

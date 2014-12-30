@@ -357,10 +357,10 @@ Each object in the array may contain the following:
 
 - `fn`: the function name in which the line is
 - `as`: an alias for the function (its real name?)
-- `file`: the path of the file containing the line
+- `path`: the path of the file containing the line
 - `dirname`: the dirname of the file stated above
-- `shortDirname`: the dirname part from the cwd
-- `prefixDirname`: the cwd if file is in a subdirectory of cwd
+- `rootpath`: the dirname part from the cwd
+- `basepath`: the cwd if file is in a subdirectory of cwd
 - `basename`: the filename without the path to it
 - `line`: the line number
 - `column`: the column number
@@ -375,7 +375,7 @@ This renders a file exerpt given a line of a stack (as an object like the one re
 
 - `colors`: (defaults to `true`) wether or not to put colors in the exerpt
 - `exerptBefore`: (defaults to `3`) the number of lines before the referenced one in the exerpt
-- `exerptAfter`: (defaults to `3`)the number of lines after the referenced one in the exerpt
+- `exerptAfter`: (defaults to `3`) the number of lines after the referenced one in the exerpt
 
 ```js
 var exerpt = errTree.fileExerpt(errTree.parseStack(err.stack)[0], {colors: false});
