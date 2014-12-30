@@ -34,8 +34,8 @@ var MyError = errTree('MyError');
 
 // Using a Function
 var MyError2 = errTree(function MyError2() /* name is mandatory here */ {
-    // do not forget to call the parent's constructor
-    errTree.BasicError.apply(this, arguments);
+  // do not forget to call the parent's constructor
+  errTree.BasicError.apply(this, arguments);
 });
 ```
 
@@ -50,8 +50,8 @@ var MyError2 = errTree(function MyError2() /* name is mandatory here */ {
 var MyError = errTree('MyError');
 // Inherits from MyError
 var MyError2 = errTree(function MyError2() /* name is mandatory here */ {
-    // do not forget to call the parent's constructor
-    MyError.apply(this, arguments);
+  // do not forget to call the parent's constructor
+  MyError.apply(this, arguments);
 }, MyError);
 ```
 
@@ -64,19 +64,19 @@ var MyError2 = errTree(function MyError2() /* name is mandatory here */ {
 ```js
 // Inherits fron errTree.BasicError
 var MyError = errTree('MyError', {
-    // hide from the subtree the 500 value from BasicError
-    // use 404 instead
-    defaultCode: 404
+  // hide from the subtree the 500 value from BasicError
+  // use 404 instead
+  defaultCode: 404
 });
 // Inherits from MyError
 var MyError2 = errTree(function MyError2() /* name is mandatory here */ {
-    // do not forget to call the parent's constructor
-    MyError.apply(this, arguments);
+  // do not forget to call the parent's constructor
+  MyError.apply(this, arguments);
 }, MyError, {
-    // hide from the subtree the null value from BasicError
-    // use 'my:error2' instead
-    defaultNs: 'my:error2'
-    // here defaultsCode is 404 because it inherits from MyError
+  // hide from the subtree the null value from BasicError
+  // use 'my:error2' instead
+  defaultNs: 'my:error2'
+  // here defaultsCode is 404 because it inherits from MyError
 });
 ```
 
@@ -110,7 +110,7 @@ Beautifiers are responsible to make the error look good at printing time. More i
 
 Defaults to the internal `default` beautifier.
 
-### `options.messageHandler`
+#### `options.messageHandler`
 
 *Function*
 
@@ -120,7 +120,7 @@ Message handlers are responsible to finalize the error message in any way deemed
 
 Defaults to the internal `default` message handler.
 
-### `options.selectExerpt`
+#### `options.selectExerpt`
 
 *Integer* or *String* or *Array of String* or *Function*
 
@@ -147,12 +147,12 @@ var util = require('util');
 var errTree = require('err-tree');
 
 function MyError() {
-    errTree.BasicError.apply(this, arguments);
+  errTree.BasicError.apply(this, arguments);
 }
 util.inherits(MyError, errTree.BasicError);
 _.extend(MyError.prototype, {
-    // options (defaultCode, defaultNs, …)
-    // selectExerpt can only be a function, other formats are not handled
+  // options (defaultCode, defaultNs, …)
+  // selectExerpt can only be a function, other formats are not handled
 });
 MyError.assert = errTree.createAssert(MyError);
 ```
@@ -168,9 +168,9 @@ var CustomNotFoundError = errTree('CustomNotFoundError', {defaultCode: 404});
 
 // This error will use code = 404 (default value used before)
 throw new CustomNotFoundError('my:lib', 'Data not found', {
-    // some request data
+  // some request data
 }, {
-    userPassword: 'password'
+  userPassword: 'password'
 });
 
 // This error will use code = 501
@@ -227,14 +227,14 @@ The `complex` beautifier is allowing for a much more complex usage. Colors, file
 
 ```js
 errTree.beautifiers.get('complex', {
-    // do we use colors?
-    colors: true,
-    // do we add a file exerpt to the rendering?
-    exerpt: true,
-    // how many lines of code before the line of the stack in the exerpt
-    exerptBefore: 3,
-    // how many lines of code after the line of the stack in the exerpt
-    exerptAfter: 3
+  // do we use colors?
+  colors: true,
+  // do we add a file exerpt to the rendering?
+  exerpt: true,
+  // how many lines of code before the line of the stack in the exerpt
+  exerptBefore: 3,
+  // how many lines of code after the line of the stack in the exerpt
+  exerptAfter: 3
 })
 ```
 
@@ -268,7 +268,7 @@ It uses a single `i18next` option (for now) (to pass to it the `i18next` instanc
 errTree.messageHandlers.get('i18next', {i18next: myInitializedI18next})
 ```
 
-For now, error messages are looked up in the `errors` locale namespace in this manner (lets take the previous example to illustrate the process) :
+For now, error messages are looked up in the `errors` locale namespace in this manner (lets take the previous example to illustrate the process):
 
 - look for `errors:some.ns.MyError.error_msg_key`
 - if it is not found, remove one namespace to look for `errors:some.MyError.error_msg_key`
@@ -284,7 +284,7 @@ Translations are always passed the `data` (+`devData`) extended with:
 - `err.ns`: the namespace associated with the error
 - `err.code`: the code associated with the error
 - `err.strCode`: the key provided as a message to create the error
-- `data`: `data` (+`devData`) in case the extension might have hidden something in the original data object
+- `data`: `data` (+`devData`) in case the extension might have hidden something in the original data object
 - `defaultValue`: `''` (to get an empty string if translation fails)
 - `context`: `'dev'` (only set if `process.env.NODE_ENV` is not equal to `production`)
 
@@ -292,12 +292,12 @@ Here is a valid locale json file for the previous example:
 
 ```json
 {
-    "some": {
-        "MyError": {
-            "error_msg_key": "an error occured during __some__",
-            "error_msg_key_dev": "an error occured during __some__ (with __someDev__)"
-        }
+  "some": {
+    "MyError": {
+      "error_msg_key": "an error occured during __some__",
+      "error_msg_key_dev": "an error occured during __some__ (with __someDev__)"
     }
+  }
 }
 ```
 
@@ -311,16 +311,23 @@ MyError.assert(myVarible === true, 'my:ns', 'message', 404, {}, {});
 
 This will throw a MyError created with the arguments following the condition if it is `false`.
 
-## Default beautifier & message handler
+## Default beautifier & message handler
 
 You can set a default beautifier & message handler by calling the following methods:
 
 ```js
-errTree.setDefaultBeautifier('complex', optiond);
+errTree.setDefaultBeautifier('complex', options);
 errTree.setDefaultMessageHandler('i18next', options);
 ```
 
 **Be careful**: setting a default message handler can have unexpected effects on other libraries using `errTree` that you might be using and is **not recommended**. We advise you to use a base error for all your errors (like `MyAppError`). It would set a default message handler for all your errors without any risk of breaking anything else.
+
+`setDefaultBeautifier` also accepts a specific option `onError` that sets the beautifier on all errors, even those not inheriting `errTree.BasicError`. This option modifies the node `Error` type and thus must be used with extreme caution.
+
+```js
+errTree.setDefaultBeautifier('complex', {onError: true});
+console.log(new Error('message')); // pretty printed with complex
+```
 
 ## Unhandled exception
 
@@ -340,7 +347,7 @@ errTree.useUncaughtExceptionHandler();
 
 `errTree` exposes most of its internal logic just in case it might be useful to write plugins or an other error handling library.
 
-### `parseStack`
+### `parseStack`
 
 Using `errTree.parseStack` you can parse any v8 stack and get an array of objects instead.
 
@@ -359,7 +366,7 @@ Each object in the array may contain the following:
 - `column`: the column number
 
 ```js
-var errTree.parseStack(err.stack);
+var parsedStack = errTree.parseStack(err.stack);
 ```
 
 ### `fileExerpt`
@@ -384,6 +391,44 @@ var assert = errTree.createAssert(Error);
 assert(false, 'my message', …); // throws a new Error('my message', …
 ```
 
-## Creating your own beautifiers & message handlers
+## Creating your own beautifiers & message handlers
 
-*TODO*
+In this section we will discuss how to personalize your errors even more by writing your own beautifiers & message handlers.
+
+### Beautifiers
+
+A beautifier is simply a function taking an error as argument and returning a string that should contain exactly (stack comprised) how the error should look like.
+
+Here is a simple example:
+
+```js
+function myBeautifier(err) {
+  return err.name + ': ' + err.message;
+}
+
+var MyError = errTree('MyError', {beautifier: myBeautifier});
+```
+
+This will produce errors with no stack looking like:
+
+```
+MyError: <error message>
+```
+
+**Note:** message handlers are executed before beautifiers so you can be confident that `err.message` contains the final message. Also you can always access the parsed stack in `err.parsedStack`.
+
+### Message handlers
+
+A message handler is a simple function taking an error as an argument and returning a new message to use.
+
+Here is a simple example:
+
+```js
+function myMessageHandler(err) {
+  return 'super simple handler − ' + err.message;
+}
+
+var MyError = errTree('MyError', {messageHandler: myMessageHandler});
+```
+
+This will add `super simple handler − ` as a prefix to all messages.

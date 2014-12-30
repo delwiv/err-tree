@@ -27,6 +27,8 @@
   "main": "lib/index.js",
   "dependencies": {
     "chalk": "^0.5.1",
+    "chrome-cpu-profiler": "^1.0.1",
+    "color-path": "^1.0.0",
     "lodash": "^2.4.1",
     "minimatch": "^2.0.1"
   },

@@ -15,18 +15,18 @@ i18next.init({
     namespaces: ['errors']
   }
 }, function() {
-  errTree.setDefaultBeautifier('complex', {exerptBefore: 15, exerptAfter: 15});
+  errTree.setDefaultBeautifier('complex');
   errTree.setDefaultMessageHandler('i18next', {i18next: i18next});
   errTree.useUncaughtExceptionHandler();
 
   var TestError = errTree('TestError', {
     defaultNs: 'my:defaultNs',
-    defaultCode: 501,
+    defaultCode: 501,
     selectExerpt: '!' + path.resolve(__dirname, '../lib/**')
   });
   var SubTestError = errTree('SubTestError', TestError, {
     defaultNs: 'my:defaultNs',
-    defaultCode: 501
+    defaultCode: 501
   });
 
   function SubSubTestError() {
