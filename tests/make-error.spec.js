@@ -56,6 +56,13 @@ describe('errTree()', function() {
       'Invalid BaseError parameter: a constructor inheriting from BasicError is expected');
   });
 
+  it('should throw if third argument is not an object', function() {
+    function test() {
+      errTree(function Test() {}, errTree.ErrtreeError, 42);
+    }
+    expect(test).to.throw(errTree.ErrtreeError, 'Invalid options parameter: expected an object');
+  });
+
   it('should accept an options object as second argument', function() {
     function test() {
       errTree(function Test() {}, {defaultCode: 404});

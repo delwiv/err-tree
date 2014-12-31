@@ -42,5 +42,5 @@ describe('errTree.createAssert()', function() {
 
       expect(test).to.throw(Error, 'message');
     });
-  })
+  });
 });

@@ -14,6 +14,8 @@ Here is the rendering of an error message in the console:
 
 ![err-tree rendering](https://bytebucket.org/lsystems/err-tree/raw/tip/docs/images/err-tree-complex-beautifier.png)
 
+err-tree is fully tested with mocha and code coverage is reported at 100% by istanbul. I will make my best to keep it that way.
+
 ## Creating new error types using the `errTree` function
 
 `err-tree` is a function allowing you to create errors easily. Its prototype looks like:
@@ -316,8 +318,13 @@ This will throw a MyError created with the arguments following the condition if 
 You can set a default beautifier & message handler by calling the following methods:
 
 ```js
+// named form
 errTree.setDefaultBeautifier('complex', options);
 errTree.setDefaultMessageHandler('i18next', options);
+
+// function form
+errTree.setDefaultBeautifier(myBeautifier, options); // only onError in options
+errTree.setDefaultMessageHandler(myMessageHandler);
 ```
 
 **Be careful**: setting a default message handler can have unexpected effects on other libraries using `errTree` that you might be using and is **not recommended**. We advise you to use a base error for all your errors (like `MyAppError`). It would set a default message handler for all your errors without any risk of breaking anything else.

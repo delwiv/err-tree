@@ -42,7 +42,7 @@ describe('errTree.BasicError', function() {
         code: 404,
         data: {}
       });
-    })
+    });
   });
 
   describe('<2 args>', function() {
@@ -73,7 +73,7 @@ describe('errTree.BasicError', function() {
         message: 'testmessage',
         code: 500,
         data: {test: 'foo'}
-      })
+      });
     });
   });
 
@@ -164,7 +164,10 @@ describe('errTree.BasicError', function() {
   });
 
   describe('#instance', function() {
-    var inst = new BasicError('message');
+    var inst;
+    beforeEach(function() {
+      inst = new BasicError('message');
+    });
 
     it('is an instance of BasicError', function() {
       expect(inst).to.be.an.instanceOf(BasicError);
@@ -251,6 +254,11 @@ describe('errTree.BasicError', function() {
         var res1 = inst.getExerpt();
         var res2 = inst.getExerpt({colors: false});
         expect(res1).not.to.be.equal(res2);
+      });
+
+      it('return the first line of a stack when nothing matches', function() {
+        inst.parsedStack = [{file: 'file'}];
+        expect(inst.getExerpt()).to.be.equal('');
       });
     });
   });

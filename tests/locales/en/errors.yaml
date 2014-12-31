@@ -1,6 +1,0 @@
-my:
-  ns:
-    awesome: this is an awesome error message (__super__)
-    awesome_dev: this is an awesome error message (__super__ - __devSuper__)
-
-key_not_found: error message "__err.strCode__" in namespace "__err.ns__" not found
