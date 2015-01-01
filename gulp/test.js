@@ -17,14 +17,10 @@ var istanbulEnd = glou
 ;
 
 var test = module.exports = glou
-  .pipe(function() {
-    return argv.coverage ? istanbulStart() : $.noop();
-  })
+  .pipe(argv.coverage ? istanbulStart : $.noop)
   .src({read: false}, ['tests/init.js', 'tests/**/*.spec.js'])
   .pipe('mocha', $.mocha, {reporter: 'spec'})
-  .pipe(function() {
-      return argv.coverage ? istanbulEnd() : $.noop();
-    })
+  .pipe(argv.coverage ? istanbulEnd : $.noop)
 ;
 
 glou.task('test', glou.mux(check, test));
