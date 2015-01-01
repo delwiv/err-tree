@@ -203,6 +203,25 @@ The numeric code associated with the error. It defaults to `defaultCode`.
 
 Data that should be associated with the error. It will be accessible in `err.data` and can be used by the error's message handler to create the final error message.
 
+#### `data.origilalError`
+
+*Optional* / *Error*
+
+If provided, the renderer will use the stack of the provided error instead of its own stack. This can be pretty useful to use the stack of the original call after an async callback.
+
+```js
+function myAsyncFunction(cb) {
+  var orig = new Error(); // If you build an errTree error here it will
+                          // be more performant
+
+  process.nextTick(function() {
+    // something bad happen, so we decide to throw, the stack printed will
+    // be the one containing the myAsyncFunction call
+    throw new MyCustomError('message', {originalError: orig});
+  });
+}
+```
+
 ### `devData`
 
 *Optional* / *Object*

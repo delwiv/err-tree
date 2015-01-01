@@ -1,7 +1,8 @@
 'use strict';
 
 var expect = require('chai').expect;
-var BasicError = require('..').BasicError;
+var errTree = require('..');
+var BasicError = errTree.BasicError;
 
 describe('errTree.BasicError', function() {
   it('is a function', function() {
@@ -187,6 +188,18 @@ describe('errTree.BasicError', function() {
       });
 
       it('return a string equal to err.stack', function() {
+        expect(inst.toString()).to.be.a('String').that.is.equal(inst.stack);
+      });
+
+      it('use the parsed stack in data.originalError if there is one', function() {
+        inst.data.originalError = new errTree.ErrtreeError();
+        delete inst.parsedStack;
+        expect(inst.toString()).to.be.a('String').that.is.equal(inst.stack);
+      });
+
+      it('use the stack in data.originalError if there is one', function() {
+        inst.data.originalError = new Error();
+        delete inst.parsedStack;
         expect(inst.toString()).to.be.a('String').that.is.equal(inst.stack);
       });
     });
