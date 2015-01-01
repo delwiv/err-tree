@@ -32,8 +32,8 @@ describe('errTree.beautifiers', function() {
       expect(test).to.not.throw();
     });
 
-    it('does not fail when error is missing', function() {
-      delete err.code;
+    it('does not fail when code is missing', function() {
+      err.code = undefined;
       function test() {
         complexBeautifier(err);
       }
@@ -41,11 +41,13 @@ describe('errTree.beautifiers', function() {
     });
 
     it('does not fail when message is missing', function() {
-      delete err.message;
+      err.message = undefined;
+      var res;
       function test() {
-        complexBeautifier(err);
+        res = complexBeautifier(err);
       }
       expect(test).to.not.throw();
+      expect(res).to.contain('<missing error message>');
     });
 
     it('contains a file exerpt by default', function() {

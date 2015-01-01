@@ -192,15 +192,34 @@ describe('errTree.BasicError', function() {
       });
 
       it('use the parsed stack in data.originalError if there is one', function() {
-        inst.data.originalError = new errTree.ErrtreeError();
-        delete inst.parsedStack;
+        inst = new errTree.ErrtreeError('message', {originalError: new errTree.ErrtreeError()});
         expect(inst.toString()).to.be.a('String').that.is.equal(inst.stack);
       });
 
       it('use the stack in data.originalError if there is one', function() {
         inst.data.originalError = new Error();
-        delete inst.parsedStack;
+        inst = new errTree.ErrtreeError('message', {originalError: new Error()});
         expect(inst.toString()).to.be.a('String').that.is.equal(inst.stack);
+      });
+
+      it('reflect changes in namespace', function() {
+        inst.ns = 'my:super:ns';
+        expect(inst.toString()).to.be.a('String').that.contain('my:super:ns');
+      });
+
+      it('reflect changes in message', function() {
+        inst.message = 'new testmessage';
+        expect(inst.toString()).to.be.a('String').that.contain('new testmessage');
+      });
+
+      it('reflect changes in code', function() {
+        inst.code = 404;
+        expect(inst.toString()).to.be.a('String').that.contain('code(404)');
+      });
+
+      it('reflect changes in parsedStack', function() {
+        inst.parsedStack = [];
+        expect(inst.toString()).to.be.a('String').that.not.contain(' at ');
       });
     });
 

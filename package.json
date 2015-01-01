@@ -38,7 +38,7 @@
   "devDependencies": {
     "blanket": "^1.1.6",
     "chai": "^1.10.0",
-    "chai-properties": "^1.1.0",
+    "chai-properties": "qraynaud/chai-properties",
     "glou": "^1.0.0-pre",
     "gulp": "^3.8.10",
     "gulp-bump": "^0.1.11",
