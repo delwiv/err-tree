@@ -7,6 +7,10 @@ var setDefaultMessageHandler = require('..').setDefaultMessageHandler;
 var setDefaultBeautifier = require('..').setDefaultBeautifier;
 
 describe('errTree.setDefaultMessageHandler()', function() {
+  afterEach(function() {
+    setDefaultMessageHandler('default');
+  });
+
   it('is a function', function() {
     expect(setDefaultMessageHandler).to.be.a('Function');
   });
@@ -38,7 +42,7 @@ describe('errTree.setDefaultMessageHandler()', function() {
     errTree.BasicError.prototype.messageHandler = undefined;
     setDefaultMessageHandler(_.identity);
 
-    expect(errTree.BasicError.prototype.messageHandler).to.not.be.undefined();
+    expect(errTree.BasicError.prototype.messageHandler).to.be.eql(_.identity);
   });
 
   it('should pass the options to the proper constructor', function() {
@@ -63,6 +67,7 @@ describe('errTree.setDefaultBeautifier()', function() {
     addedFields.forEach(function(field) {
       delete Error.prototype[field];
     });
+    setDefaultBeautifier('default');
     Error.prototype.toString = errorToString;
   });
 

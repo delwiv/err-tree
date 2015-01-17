@@ -33,7 +33,6 @@ describe('errTree()', function() {
       'Invalid Error parameter: invalid name "0test"');
   });
 
-
   it('should throw if first argument is an anonymous function', function() {
     function test() {
       errTree(function() {});
