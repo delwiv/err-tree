@@ -21,13 +21,13 @@ var checkLib = glou
 ;
 
 var checkTests = glou
-  .configure({jshintrc: 'tests/.jshintrc'})
+  .configure({jshintrc: 'test/.jshintrc'})
   .src([
-    'tests/**/*.js',
+    'test/**/*.js',
   ])
   .pipe(checker)
 ;
 
-var check = module.exports = glou.mux(checkLib, checkTests);
+var check = module.exports = glou.parallel(checkLib, checkTests);
 
 glou.task('check', check);

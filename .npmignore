@@ -1,0 +1,13 @@
+.hgignore
+.hgtags
+.jscsrc
+.jshintrc
+.npmignore
+coverage/
+docs/
+gulp/
+Gulpfile.js
+tests/
+*.orig
+*.tmp
+*.tgz

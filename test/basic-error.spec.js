@@ -140,6 +140,15 @@ describe('errTree.BasicError', function() {
         data: {test: 'foo', devtest: 'bar'}
       });
     });
+
+    it('accepts all but code', function() {
+      var err = new BasicError('testns', 'testmessage', {test: 'foo'}, {devtest: 'bar'});
+      expect(err).to.have.properties({
+        ns: 'testns',
+        message: 'testmessage',
+        data: {test: 'foo', devtest: 'bar'}
+      });
+    });
   });
 
   describe('<5 args>', function() {
