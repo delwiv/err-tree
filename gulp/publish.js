@@ -62,13 +62,18 @@ var publish = module.exports = glou
     return function(cb) {
       $.log('Commit/tag/push & NPM publish…');
 
-      run([
+      var cmds = [
         'hg addremove',
         'hg commit -m "Release v' + version + '"',
         'hg tag "v' + version + '"',
         'hg push',
-        'npm publish',
-      ], cb);
+        'npm publish'
+      ];
+
+      if (pkg.version === version)
+        cmds.splice(0, 2);
+
+      run(cmds, cb);
     };
   })
 
