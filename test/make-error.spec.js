@@ -25,6 +25,15 @@ describe('errTree()', function() {
       'Invalid Error parameter: expected a string or a named function');
   });
 
+  it('should throw if first argument is not a valid name', function() {
+    function test() {
+      errTree('0test');
+    }
+    expect(test).to.throw(errTree.ErrtreeError,
+      'Invalid Error parameter: invalid name "0test"');
+  });
+
+
   it('should throw if first argument is an anonymous function', function() {
     function test() {
       errTree(function() {});
