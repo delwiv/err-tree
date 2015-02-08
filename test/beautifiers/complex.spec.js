@@ -50,6 +50,14 @@ describe('errTree.beautifiers', function() {
       expect(res).to.contain('<missing error message>');
     });
 
+    it('does not fail when function is not specified in a stack entry', function() {
+      delete err.parsedStack[1].fn;
+      function test() {
+        complexBeautifier(err);
+      }
+      expect(test).to.not.throw();
+    });
+
     it('contains a file exerpt by default', function() {
       expect(complexBeautifier(err)).to.contain(__filename);
     });
