@@ -35,7 +35,7 @@ describe('errTree.setDefaultMessageHandler()', function() {
     errTree.BasicError.prototype.messageHandler = undefined;
     setDefaultMessageHandler('default');
 
-    expect(errTree.BasicError.prototype.messageHandler).to.not.be.undefined();
+    expect(errTree.BasicError.prototype.messageHandler).to.not.be.undefined;
   });
 
   it('should accept a function', function() {
@@ -95,14 +95,14 @@ describe('errTree.setDefaultBeautifier()', function() {
     errTree.BasicError.prototype.beautifier = undefined;
     setDefaultBeautifier(errTree.beautifiers.get('default'));
 
-    expect(errTree.BasicError.prototype.beautifier).to.not.be.undefined();
+    expect(errTree.BasicError.prototype.beautifier).to.not.be.undefined;
   });
 
   it('should change the default beautifier', function() {
     errTree.BasicError.prototype.beautifier = undefined;
     setDefaultBeautifier('default');
 
-    expect(errTree.BasicError.prototype.beautifier).to.not.be.undefined();
+    expect(errTree.BasicError.prototype.beautifier).to.not.be.undefined;
   });
 
   it('should pass the options to the proper constructor', function() {

@@ -131,9 +131,9 @@ describe('errTree()', function() {
       .that.is.equal(options.selectExerpt)
       .that.is.a('Function')
     ;
-    expect(options.selectExerpt({}, 2)).to.be.not.ok();
-    expect(options.selectExerpt({dirname: '/test'}, 1)).to.be.not.ok();
-    expect(options.selectExerpt({dirname: '/test'}, 2)).to.be.ok();
+    expect(options.selectExerpt({}, 2)).to.be.not.ok;
+    expect(options.selectExerpt({dirname: '/test'}, 1)).to.be.not.ok;
+    expect(options.selectExerpt({dirname: '/test'}, 2)).to.be.ok;
   });
 
   it('should mutate the selectExerpt option into a proper function if it is a string', function() {
@@ -144,9 +144,9 @@ describe('errTree()', function() {
       .that.is.equal(options.selectExerpt)
       .that.is.a('Function')
     ;
-    expect(options.selectExerpt({})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok();
+    expect(options.selectExerpt({})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok;
   });
 
   it('should mutate the selectExerpt option into a proper function if it is a string', function() {
@@ -157,12 +157,12 @@ describe('errTree()', function() {
       .that.is.equal(options.selectExerpt)
       .that.is.a('Function')
     ;
-    expect(options.selectExerpt({})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok();
-    expect(options.selectExerpt({dirname: 'test/', path: 'test/file2'})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file'})).to.be.ok();
-    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file2'})).to.be.ok();
+    expect(options.selectExerpt({})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok;
+    expect(options.selectExerpt({dirname: 'test/', path: 'test/file2'})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file'})).to.be.ok;
+    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file2'})).to.be.ok;
   });
 
   it('should mutate properly selectExerpt with only negate patterns', function() {
@@ -173,11 +173,11 @@ describe('errTree()', function() {
       .that.is.equal(options.selectExerpt)
       .that.is.a('Function')
     ;
-    expect(options.selectExerpt({})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.ok();
-    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok();
-    expect(options.selectExerpt({dirname: 'test/', path: 'test/file2'})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file'})).to.be.not.ok();
-    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file2'})).to.be.ok();
+    expect(options.selectExerpt({})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'lib/', path: 'lib/file'})).to.be.ok;
+    expect(options.selectExerpt({dirname: 'test/', path: 'test/file'})).to.be.ok;
+    expect(options.selectExerpt({dirname: 'test/', path: 'test/file2'})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file'})).to.be.not.ok;
+    expect(options.selectExerpt({dirname: 'test2/', path: 'test2/file2'})).to.be.ok;
   });
 });

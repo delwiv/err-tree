@@ -47,7 +47,7 @@ describe('errTree.fileExerpt()', function() {
       column: 1
     });
 
-    expect(res).to.be.empty();
+    expect(res).to.be.empty;
   });
 
   it('returns less lines at the top when it has to', function() {

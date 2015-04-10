@@ -13,7 +13,7 @@ describe('errTree.parseStack()', function() {
   });
 
   it('trash every useless line in the stack', function() {
-    expect(parseStack('useless\nuseless\nuseless\n')).to.be.empty();
+    expect(parseStack('useless\nuseless\nuseless\n')).to.be.empty;
   });
 
   it('return as many elements in the array as lines in a stack', function() {

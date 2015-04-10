@@ -267,15 +267,15 @@ describe('errTree.BasicError', function() {
       });
 
       it('returns falsy if provided argument does not contain a dirname', function() {
-        expect(inst.selectExerpt({})).to.be.not.ok();
+        expect(inst.selectExerpt({})).to.be.not.ok;
       });
 
       it('returns falsy if provided argument contains a dirname with node_modules/ in it', function() {
-        expect(inst.selectExerpt({dirname: 'tests/node_modules/tests'})).to.be.not.ok();
+        expect(inst.selectExerpt({dirname: 'tests/node_modules/tests'})).to.be.not.ok;
       });
 
       it('returns true otherwise', function() {
-        expect(inst.selectExerpt({dirname: 'ok/'})).to.be.true();
+        expect(inst.selectExerpt({dirname: 'ok/'})).to.be.true;
       });
     });
 
@@ -300,6 +300,53 @@ describe('errTree.BasicError', function() {
       it('return the first line of a stack when nothing matches', function() {
         inst.parsedStack = [{file: 'file'}];
         expect(inst.getExerpt()).to.be.equal('');
+      });
+    });
+
+    describe('.toJSON()', function() {
+      var nodeEnv = process.env.NODE_ENV;
+
+      afterEach(function() {
+        process.env.NODE_ENV = nodeEnv;
+      });
+
+      it('is a function', function() {
+        expect(inst)
+          .to.have.property('toJSON')
+          .that.is.a('Function')
+        ;
+      });
+
+      it('returns an object', function() {
+        expect(inst.toJSON()).to.be.an('Object');
+      });
+
+      it('should have the ns, code, name, message, data & parsedStack attributes if NODE_ENV ' +
+        'is not production', function() {
+        process.env.NODE_ENV = 'test';
+
+        expect(inst.toJSON()).to.have.properties({
+          ns: inst.ns,
+          code: inst.code,
+          name: inst.name,
+          message: inst.message,
+          data: inst.data,
+          parsedStack: inst.parsedStack
+        });
+      });
+
+      it('should have the ns, code, name, message & data attributes if NODE_ENV is production', function() {
+        process.env.NODE_ENV = 'production';
+
+        expect(inst.toJSON()).to.have.properties({
+          ns: inst.ns,
+          code: inst.code,
+          name: inst.name,
+          message: inst.message,
+          data: inst.data
+        });
+
+        expect(inst.toJSON()).to.not.have.property('parsedStack');
       });
     });
   });
