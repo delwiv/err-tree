@@ -1,3 +1,7 @@
+## 1.0.4 & 1.0.5
+
+* ensure err.stack is always writable (this is important for bluebird & other libs)
+
 ## 1.0.3
 
 * BasicError: add a basic .toJSON method on errors to have prettier JSON outputs
