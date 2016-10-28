@@ -2,7 +2,7 @@
 
 var expect = require('chai').expect;
 var fileExerpt = require('..').fileExerpt;
-var chalk = require('color-path').chalkGetter(true);
+var chalk = require('chalk');
 var fs = require('fs');
 
 describe('errTree.fileExerpt()', function() {

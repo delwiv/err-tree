@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 var errTree = require('../..');
 var complexBeautifier = errTree.beautifiers.complex();
-var chalk = require('color-path').chalkGetter(true);
+var chalk = require('chalk');
 
 describe('errTree.beautifiers', function() {
   describe('#complex', function() {

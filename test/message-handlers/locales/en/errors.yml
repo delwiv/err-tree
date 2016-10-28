@@ -1,4 +1,4 @@
-key_not_found: key_not_found (__err.strCode__)
+key_not_found: key_not_found ({{err.strCode}})
 default_msg: default_msg
 Named:
   default_msg: Named.default_msg

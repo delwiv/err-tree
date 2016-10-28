@@ -4,11 +4,11 @@ var sinon = require('sinon');
 var expect = require('chai').expect;
 var errTree = require('../..');
 var i18next = require('i18next');
-var i18nextYaml = require('i18next.yaml');
+var Backend = require('i18next-node-fs-backend');
 
 var i18nextMessageHandler = errTree.messageHandlers.i18next({i18next: i18next});
 
-i18next.backend(i18nextYaml);
+i18next.use(Backend);
 
 function createError(name, ns, message, code, data) {
   return {
@@ -24,11 +24,11 @@ describe('errTree.messageHandlers', function() {
   before(function(done) {
     i18next.init({
       lng: 'en',
-      ns: {
-        namespaces: ['errors']
+      ns: ['errors'],
+      backend: {
+        loadPath: __dirname + '/locales/{{lng}}/{{ns}}.yml',
       },
-      resGetPath: __dirname + '/locales/__lng__/__ns__.yaml',
-      debug: false
+      debug: false,
     }, function() {
       done();
     });
