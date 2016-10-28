@@ -1,6 +1,6 @@
 {
   "name": "err-tree",
-  "version": "1.0.6-pre",
+  "version": "1.0.6",
   "description": "Advanced error handling & printing",
   "author": {
     "name": "L.systems SARL",
